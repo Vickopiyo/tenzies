@@ -2,23 +2,20 @@ import { useEffect, useState } from "react";
 import Die from "./component/Die";
 import uuid from "react-uuid";   
 import Confetti from 'react-confetti'
-
 function App() {    
-  
-     const [diceArr, setdiceArr] = useState(allNewDice());   
-  
-  // Checks whether game is won or not  
+    //  Array generated onload or Clicking New Game   
+     const [diceArr, setdiceArr] = useState(allNewDice());      
+  // Checks whether game is won or not          
      const [tenzies, setTenzies]= useState(false)      
   
-         useEffect(()=>{   
+         useEffect(()=> {          
 
          const allHeld = diceArr.every( dice => dice.isHeld) 
          const diceValue = diceArr[0].value
          const allDiceEqual = diceArr.every( dice =>  dice.value === diceValue  ) 
         
-          if ( allHeld && allDiceEqual){   
-             setTenzies(true) 
-            console.log("You won") 
+          if ( allHeld && allDiceEqual){         
+             setTenzies(true)      
           }  else{
                
           }       
@@ -45,8 +42,8 @@ function App() {
     return newDice;
   }
 
-  function toogleDice(id) {
-    setdiceArr((prevdices) => {
+  function toogleDice(id) {         
+    setdiceArr((prevdices) => {    
       return prevdices.map((eachDice) => {
         return eachDice.id === id
           ? { ...eachDice, isHeld: !eachDice.isHeld }
@@ -56,12 +53,12 @@ function App() {
   }
 
   const diceElements = diceArr.map((dice) => {
-    return <Die key={dice.id} {...dice} toggle={() => toogleDice(dice.id)} />;
-  });        
-
+    return <Die key={dice.id} {...dice} toggle={() => toogleDice(dice.id)} />;     
+  });       
+        
   function rollDice() {        
-    
-      if(!tenzies){         
+                  
+      if(!tenzies){     
         setdiceArr((oldDie) => {            
           return oldDie.map((die) => {
             return die.isHeld ? die : generateNewDie();
@@ -69,7 +66,7 @@ function App() {
         });                
       } else{    
 
-        setTenzies(false)
+         setTenzies(false)
          setdiceArr(allNewDice())             
       }
 
@@ -84,7 +81,7 @@ function App() {
         <p className="instructions">
           Roll until all dice are the same. Click each die to freeze it at its
           current value between rolls.
-        </p>
+        </p>                 
         <div className="die-container">{diceElements}</div>
         <button className="btn-roll" onClick={rollDice}>
           {tenzies ? "New Game" : "Roll"}
@@ -92,6 +89,7 @@ function App() {
       </main>          
     </div>       
   );
-}         
+}            
 
-export default App;
+export default App;   
+
