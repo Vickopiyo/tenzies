@@ -30,7 +30,10 @@ const diceElements = diceArr.map((dice, index)=> {
       <main>
         <div className="die-container">     
            {diceElements}   
-        </div>
+        </div>   
+        
+        <button  className="btn-roll">Roll</button>
+      
       </main>
     </div>
   );
