@@ -14,7 +14,7 @@ function App() {
          const diceValue = diceArr[0].value
          const allDiceEqual = diceArr.every( dice =>  dice.value === diceValue  ) 
         
-          if ( allHeld && allDiceEqual){         
+          if ( allHeld && allDiceEqual){                   
              setTenzies(true)      
           }  else{
                
@@ -80,7 +80,8 @@ function App() {
         <h1 className="title">Tenzies</h1 >
         <p className="instructions">
           Roll until all dice are the same. Click each die to freeze it at its
-          current value between rolls.
+          current value between rolls.    
+
         </p>                 
         <div className="die-container">{diceElements}</div>
         <button className="btn-roll" onClick={rollDice}>
@@ -91,5 +92,5 @@ function App() {
   );
 }            
 
-export default App;   
-
+export default App;           
+        
